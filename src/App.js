@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
@@ -25,7 +24,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>React To-Do List</h1>
+      <h1> To-Do List</h1>
       <div className="add-task">
         <input
           type="text"

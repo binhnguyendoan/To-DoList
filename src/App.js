@@ -19,7 +19,7 @@ function App() {
           <Route path='/About' element={<About></About>}></Route>
           <Route path='/ToDoList' element={<List></List>}></Route>
         </Route>
-          {/* <Route path='*' element={<>This is 404 page</>}></Route> */}
+        <Route path='*' element={<>This is 404 page</>}></Route>
       </Routes>
     </div>
   );

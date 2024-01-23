@@ -1,44 +1,26 @@
-import { useState } from 'react';
-import './App.css';
-import TodoList from './components/TodoList';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import "./App.css";
+import List from './components/pages/List';
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import TodoList from './components/ToDoList/TodoList';
+import Nav from './components/pages/Nav';
+
+
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
-
-  const handleAddTask = () => {
-    if (newTask.trim() !== '') {
-      const newTaskObj = {
-        id: Date.now(),
-        content: newTask,
-      };
-      setTasks([...tasks, newTaskObj]);
-      setNewTask('');
-    }
-  };
-
-  const handleDeleteTask = (taskId) => {
-    const updatedTasks = tasks.filter(task => task.id !== taskId);
-    setTasks(updatedTasks);
-  };
-
   return (
     <div className="app">
-      <h1> To-Do List</h1>
-      <div className="add-task">
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Thêm công việc..."
-        />
-        <button onClick={handleAddTask}>Thêm</button>
-      </div>
-      {tasks.length === 0 ? (
-        <p>Danh sách công việc trống</p>
-      ) : (
-        <TodoList tasks={tasks} onDelete={handleDeleteTask} />
-      )}
+
+      <Routes>
+        <Route path='/' element={<Nav></Nav>}>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/About' element={<About></About>}></Route>
+          <Route path='/ToDoList' element={<List></List>}></Route>
+        </Route>
+          <Route path='*' element={<>This is 404 page</>}></Route>
+      </Routes>
     </div>
   );
 };
